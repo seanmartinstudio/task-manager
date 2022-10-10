@@ -1,11 +1,12 @@
-import './App.css';
+import './App.css'
+import LoginPage from "./components/LoginPage"
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 function App() {
 
   return (
-    <h1>Hello World</h1>
+    <LoginPage/>
   );
 }
 

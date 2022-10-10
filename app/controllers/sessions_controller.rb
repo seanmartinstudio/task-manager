@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
 
+    #LogIn form end point
     def create 
         user = User.find_by(username: params[:username])
         if user&.authenticate(params[:password])
@@ -10,6 +11,7 @@ class SessionsController < ApplicationController
         end
     end
 
+    #LogOut form end point
     def destroy 
         user = User.find_by(username: params[:username])
         if session[:user_id]
