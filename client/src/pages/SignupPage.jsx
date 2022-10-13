@@ -9,7 +9,7 @@ const SignupPage = () => {
     const [password, setPassword] = useState("")
     const [passwordConfirmation, setPasswordConfirmation] = useState("")
     const [title, setTitle] = useState("")
-    const [errors, setErrors] = useState([])
+    // const [errors, setErrors] = useState([])
 
     const handleUsernameChange = (event) => {
         setUsername(event.target.value)
@@ -33,8 +33,7 @@ const SignupPage = () => {
 
     const handleFormSubmit = (event) => {
         event.preventDefault()
-        setErrors([])
-        axios.post('http://localhost:3000/signup', {
+        axios.post("http://localhost:3000/signup", {
             username,
             password,
             password_confirmation: passwordConfirmation,
@@ -47,6 +46,20 @@ const SignupPage = () => {
             console.log(error);
           });
       }
+
+      // function handleFormSubmit(e) {
+      //   e.preventDefault();
+      //   fetch("http://localhost:3000/signup", {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     body: JSON.stringify({
+      //       username,
+      //       password,
+      //       password_confirmation: passwordConfirmation,
+      //       title
+      //     })})}
 
    return (
     <form onSubmit={handleFormSubmit}>
@@ -72,3 +85,5 @@ const SignupPage = () => {
 }
 
 export default SignupPage
+
+//Set up session controller in order for User to be created properlly
