@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 
 const LoginPage = () => {
 
-  const [username, setUsername] = useState(null)
-  const [password, setPassword] = useState(null)
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value)
@@ -32,11 +32,11 @@ const LoginPage = () => {
     <input type="text" id="password" name="password" placeholder="Password" onChange={handlePasswordChange} value={password}></input>
 
     <br></br>
-    <button class="button">Login</button>
+    <button className="button">Login</button>
 
     <br></br>
     <Link to="/signup">
-    <button class="button">New User? Sign Up Here</button>
+    <button className="button">New User? Sign Up Here</button>
     </Link>
   </form>
 )
