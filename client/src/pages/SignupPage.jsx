@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useState } from "react";
 
@@ -8,32 +9,44 @@ const SignupPage = () => {
     const [password, setPassword] = useState("")
     const [passwordConfirmation, setPasswordConfirmation] = useState("")
     const [title, setTitle] = useState("")
+    const [errors, setErrors] = useState([])
 
     const handleUsernameChange = (event) => {
         setUsername(event.target.value)
-        console.log(password)
+        // console.log(password)
     }
 
     const handlePasswordChange = (event) => {
         setPassword(event.target.value)
-        console.log(password)
+        // console.log(password)
     }
 
     const handlePasswordConfirmationChange = (event) => {
         setPasswordConfirmation(event.target.value)
-        console.log(passwordConfirmation)
+        // console.log(passwordConfirmation)
     }
 
     const handleTitleChange = (event) => {
         setTitle(event.target.value)
-        console.log(title)
+        // console.log(title)
     }
 
     const handleFormSubmit = (event) => {
         event.preventDefault()
-        console.log(username, password, passwordConfirmation, title)
+        setErrors([])
+        axios.post('http://localhost:3000/signup', {
+            username,
+            password,
+            password_confirmation: passwordConfirmation,
+            title
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
       }
-    
 
    return (
     <form onSubmit={handleFormSubmit}>
