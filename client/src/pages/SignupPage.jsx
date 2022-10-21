@@ -38,8 +38,10 @@ const SignupPage = () => {
           })
           .catch(function (error) {
             if(error.response.status === 422)
-            console.log(error.response.status)
             setPasswordTaken(true)
+            setUsername("")
+            setPassword("")
+            setTitle("")
           });
       }
 
@@ -48,7 +50,6 @@ const SignupPage = () => {
       if(passwordTaken) {
         passwordTakenMessage = <p className="passwordTakenMessage">Password Taken...</p>
       }
-
 
    return (
 

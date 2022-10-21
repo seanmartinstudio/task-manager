@@ -2,12 +2,31 @@ import './App.css'
 import { Route, Routes } from 'react-router-dom'
 import LoginPage from "./pages/LoginPage"
 import SignupPage from './pages/SignupPage'
+import { useState, useEffect } from "react";
+import axios from 'axios'
 
 function App() {
-  // const [goToLogInPage, setGoToLogInPage] = useState(false)
-  // //setNavToLogInPage state here, pass down to SignupPage componenet
+  const [user, setUser] = useState(null);
 
-  // console.log(goToLogInPage)
+  useEffect(() => {
+    // axios.post('http://localhost:3000/login', {
+    //   firstName: 'Fred',
+    //   lastName: 'Flintstone'
+    // })
+    // .then(function (response) {
+    //   console.log(response);
+    // })
+    // .catch(function (error) {
+    //   console.log(error);
+    // });
+        // // auto-login
+    // fetch("/me").then((r) => {
+    //   if (r.ok) {
+    //     r.json().then((user) => setUser(user));
+    //   }
+    // });
+    console.log("fire")
+  }, []); 
 
   return (
   <Routes>

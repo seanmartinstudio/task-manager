@@ -15,4 +15,9 @@ Rails.application.routes.draw do
 
   # post '/login', to: 'sessions#create'
   # delete '/logout', to: 'sessions#destroy'
+
+  Rails.application.routes.draw do
+    # route to test your configuration
+    get '/hello', to: 'application#hello_world'
+  end
 end

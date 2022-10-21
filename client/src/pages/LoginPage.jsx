@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState } from "react";
+import axios from 'axios'
 import { Link } from 'react-router-dom'
+
 
 
 const LoginPage = () => {
@@ -20,7 +22,16 @@ const LoginPage = () => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault()
-    console.log(username, password)
+    axios.post('http://localhost:3000/login', {
+     username,
+     password
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
   return (
