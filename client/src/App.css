@@ -31,6 +31,10 @@ button {
   font-weight: bold;
 }
 
+.notSignedUpMessage{
+  font-weight: bold;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

@@ -1,14 +1,16 @@
 import React from 'react'
 import { useState } from "react";
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate} from 'react-router-dom'
+import SignupPage from './SignupPage';
 
 
 
-const LoginPage = () => {
+const LoginPage = ( {onLogin} ) => {
 
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [notSignedUp, setNotSignedUp] = useState(false)
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value)
@@ -21,17 +23,25 @@ const LoginPage = () => {
   }
 
   const handleFormSubmit = (event) => {
-    event.preventDefault()
-    axios.post('http://localhost:3000/login', {
-     username,
-     password
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
+    event.preventDefault();
+    fetch("http://localhost:3000/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then((user) => onLogin(user));
+      } else {
+        setNotSignedUp(true)
+      }
     });
+  }
+
+  let notSignedUpMessage
+  if(notSignedUp) {
+    notSignedUpMessage = <p className="notSignedUpMessage">Not a current user...</p>
   }
 
   return (
@@ -46,9 +56,17 @@ const LoginPage = () => {
     <button className="button">Login</button>
 
     <br></br>
-    <Link to="/signup">
+    {/* <Link to="/signup">
     <button className="button">New User? Sign Up Here</button>
-    </Link>
+    </Link> */}
+{/* 
+    <Link to="/">
+    <button onClick={handleSignUpLink} className="button">onclic? Login Here</button>
+    </Link> */}
+    
+
+    <br></br>
+    {notSignedUpMessage}
   </form>
 )
 }

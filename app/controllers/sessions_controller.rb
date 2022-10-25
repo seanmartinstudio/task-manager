@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+    require 'byebug'
 
     #LogIn form end point
     def create 

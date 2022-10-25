@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    require 'byebug'
 
     #Dev Test end point for all Users
     def index 

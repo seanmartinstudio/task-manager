@@ -32,6 +32,7 @@ const SignupPage = () => {
             title
           })
           .then(function (response) {
+            console.log(response.status)
             if(response.status >= 200 || response.status <= 299) {
               navigate('/')
             }
@@ -51,6 +52,7 @@ const SignupPage = () => {
         passwordTakenMessage = <p className="passwordTakenMessage">Password Taken...</p>
       }
 
+
    return (
 
     <form onSubmit={handleFormSubmit}>
@@ -69,7 +71,7 @@ const SignupPage = () => {
     <Link to="/">
     <button className="button">Already a user? Login Here</button>
     </Link>
-    
+
     <br></br>
     {passwordTakenMessage}
   </form>
