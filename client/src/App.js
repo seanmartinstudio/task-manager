@@ -15,8 +15,11 @@ function App() {
       if (response.ok) {
         response.json().then((user) => setUser(user))
       }
-    });
+    }).then(() => {
+      console.log("Hello World")
+    })
   }, []);
+
 
   if (!user) return <LoginPage onLogin={setUser} />
 
