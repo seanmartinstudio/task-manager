@@ -5,6 +5,7 @@ import SignupPage from './pages/SignupPage'
 import { useState, useEffect } from "react";
 import axios from 'axios'
 import AllTasksPage from './pages/AllTasksPage';
+import NavBar from './components/NavBar';
 
 function App() {
   const [user, setUser] = useState(null)
@@ -24,11 +25,13 @@ function App() {
   if (!user) return <LoginPage onLogin={setUser} />
 
   return (
-  <Routes>
-    <Route path="/signup" element={<SignupPage/>} />
-    
-    <Route path="/" element={<AllTasksPage/>} />
-  </Routes>
+  <main>
+    <NavBar setUser={setUser}/>
+    <Routes>
+      <Route path="/signup" element={<SignupPage/>} />
+      <Route path="/" element={<AllTasksPage/>} />
+    </Routes>
+  </main>
   )
 }
 
