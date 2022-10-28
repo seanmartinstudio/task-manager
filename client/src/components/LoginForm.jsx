@@ -1,25 +1,54 @@
 import React from 'react'
+import { useState } from "react";
 
-const LoginForm = () => {
+const LoginForm = ( {onLogin, setShowLogin} ) => {
+
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  const [notSignedUp, setNotSignedUp] = useState(false)
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then((user) => onLogin(user));
+      } else {
+        setNotSignedUp(true)
+        setUsername("")
+        setPassword("")
+      }
+    });
+  }
+
+  let notSignedUpMessage
+  if(notSignedUp) {
+    notSignedUpMessage = <p className="notSignedUpMessage">Not a current user...</p>
+  }
+
   return (
-    <form>
-        <h2>LoginForm Component</h2>
-        {/* <label for="username">Username</label> */}
-        <input type="text" id="username" name="username" placeholder="Username"></input>
+    <form onSubmit={handleFormSubmit}>
+    <h2>Login Page</h2>
+  
+    <input type="text" id="username" name="username" placeholder="Username" onChange={(event) => setUsername(event.target.value)} value={username}></input>
 
-        {/* <label for="password">Password</label> */}
-        <input type="text" id="password" name="password" placeholder="Pasword"></input>
+    <input type="text" id="password" name="password" placeholder="Password" onChange={(event) => setPassword(event.target.value)} value={password}></input>
 
-        <br></br>
-        <button class="button">Login</button>
+    <br></br>
+    <button className="button">Login</button>
 
-        <br></br>
-        <button class="button">New User Signup</button>
-
-
-    </form>
-  )
+    <br></br>
+    <button className="button" type="button" onClick={() => setShowLogin(false)}>New User? Sign Up Here</button>
+    
+    <br></br>
+    {notSignedUpMessage}
+  </form>
+)
 }
-
 
 export default LoginForm

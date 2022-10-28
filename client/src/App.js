@@ -16,7 +16,7 @@ function App() {
         response.json().then((user) => setUser(user))
       }
     }).then(() => {
-      console.log("Hello World")
+      console.log("Heading to Login page")
     })
   }, []);
 
