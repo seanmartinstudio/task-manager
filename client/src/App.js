@@ -1,11 +1,10 @@
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
 import LoginPage from "./pages/LoginPage"
-import SignupPage from './pages/SignupPage'
 import { useState, useEffect } from "react";
-import axios from 'axios'
 import AllTasksPage from './pages/AllTasksPage';
 import NavBar from './components/NavBar';
+import NewTaskPage from './pages/NewTaskPage'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -28,8 +27,8 @@ function App() {
   <main>
     <NavBar setUser={setUser}/>
     <Routes>
-      <Route path="/signup" element={<SignupPage/>} />
-      <Route path="/" element={<AllTasksPage/>} />
+      <Route path="/tasks/new" element={<NewTaskPage/>} />
+      <Route path="/tasks" element={<AllTasksPage/>} />
     </Routes>
   </main>
   )
