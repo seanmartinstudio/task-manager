@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   # post '/login', to: 'sessions#create'
   # delete '/logout', to: 'sessions#destroy'
 
+  get 'all-tasks', to: 'tasks#index'
+
   Rails.application.routes.draw do
   resources :tasks
   resources :categories
