@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_30_174327) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_01_164730) do
+  create_table "categories", force: :cascade do |t|
+    t.string "category_title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "heading"
+    t.string "body"
+    t.boolean "complete"
+    t.integer "user_id"
+    t.integer "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"

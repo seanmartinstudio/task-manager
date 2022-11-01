@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :tasks
+  resources :categories
   resources :users
   resources :sessions
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -17,6 +19,8 @@ Rails.application.routes.draw do
   # delete '/logout', to: 'sessions#destroy'
 
   Rails.application.routes.draw do
+  resources :tasks
+  resources :categories
     # route to test your configuration
     get '/hello', to: 'application#hello_world'
   end

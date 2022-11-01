@@ -23,12 +23,13 @@ input[type=text] {
 
 button {
   padding: 12px 20px;
-  margin: 8px 0;
+  margin: 5px;
   border-radius: 15px;  
 }
 
 nav {
   text-align: right;
+  padding: 10px;
 }
 
 .passwordTakenMessage{
