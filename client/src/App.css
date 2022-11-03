@@ -6,6 +6,10 @@ h1 {
   text-align: center;
 }
 
+artcile, h1 {
+  text-align: left; 
+}
+
 button body {
   color:blue
 }

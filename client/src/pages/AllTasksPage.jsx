@@ -16,9 +16,10 @@ console.log("JSON", allTasks)
     <div>{allTasks.map((task) => ( 
       <article key={task.id}>
       <h1>{task.heading}</h1>
-      <p>{task.body}</p>
-      <p>{task.complete.toString()}</p>
-      <p>{task.user.username}</p>
+      <p>Published by: {task.user.username}</p>
+      <p>Category: {task.category.category_title}</p>
+      <p>Body: {task.body}</p>
+      <p>Complete: {task.complete.toString()}</p>
       </article>
     ))}</div>
   )
