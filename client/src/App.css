@@ -6,6 +6,10 @@ h1 {
   text-align: center;
 }
 
+button body {
+  color:blue
+}
+
 form {
   text-align: center; 
 }
@@ -19,9 +23,13 @@ input[type=text] {
 
 button {
   padding: 12px 20px;
+  background-color: black;
+  color: white;
   margin: 5px;
+  border-style: none;
   border-radius: 15px;  
 }
+
 
 nav {
   text-align: right;

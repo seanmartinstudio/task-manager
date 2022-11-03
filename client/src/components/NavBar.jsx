@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 
-const NavBar = ( {setUser} ) => {
+const NavBar = ( {setUser, user} ) => {
+
 function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
         if (r.ok) {
@@ -9,6 +10,9 @@ function handleLogoutClick() {
         }
     });
     }
+    
+    //holds value of logged in user's name, for future rendering to page"
+    // let userName = user.username
 
   return (
     <nav className='nav'>

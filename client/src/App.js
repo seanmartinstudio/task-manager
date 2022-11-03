@@ -20,15 +20,17 @@ function App() {
     })
   }, []);
 
+  console.log("Logged In User => ", user)
+
 
   if (!user) return <LoginPage onLogin={setUser} />
 
   return (
   <main>
-    <NavBar setUser={setUser}/>
+    <NavBar setUser={setUser} user={user}/>
     <Routes>
-      <Route path="/tasks/new" element={<NewTaskPage/>} />
-      <Route path="/tasks" element={<AllTasksPage/>} />
+      <Route path="/tasks/new" element={<NewTaskPage user={user}/>} />
+      <Route path="/tasks" element={<AllTasksPage user={user}/>} />
     </Routes>
   </main>
   )
