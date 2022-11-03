@@ -18,7 +18,7 @@ console.log("JSON", allTasks)
       <h1>{task.heading}</h1>
       <p>{task.body}</p>
       <p>{task.complete.toString()}</p>
-      {/* <p>{task.user.username}</p> */}
+      <p>{task.user.username}</p>
       </article>
     ))}</div>
   )
