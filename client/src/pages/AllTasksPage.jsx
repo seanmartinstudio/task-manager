@@ -1,17 +1,18 @@
 import React from 'react'
 import { useEffect, useState } from "react";
 
-const AllTasksPage = ( ) => {
+const AllTasksPage = ( {user} ) => {
 const [allTasks, setAllTasks] = useState([])
+const [taskComplete, setTaskComplete] = useState(false)
 
 useEffect(() => {
   fetch("/all-tasks")
     .then((r) => r.json())
     .then(setAllTasks);
 },[]);
-
-console.log("JSON", allTasks)
-
+// if you user.username == allTasks.username
+console.log("All Tasks Page - User", user)
+console.log("All Tasks Page - Post", allTasks)
   return (
     <div>{allTasks.map((task) => ( 
       <article key={task.id}>
@@ -20,6 +21,10 @@ console.log("JSON", allTasks)
       <p>Category: {task.category.category_title}</p>
       <p>Body: {task.body}</p>
       <p>Complete: {task.complete.toString()}</p>
+      {taskComplete
+      ? <button>Complete</button>
+      : <button>Incomplete</button>
+      }
       </article>
     ))}</div>
   )
