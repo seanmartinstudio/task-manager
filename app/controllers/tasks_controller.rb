@@ -2,6 +2,7 @@ class TasksController < ApplicationController
     require 'byebug'
 
     #READ 
+    #Patch 'tasks#index'
     def index 
         user = User.find_by(id: session[:user_id])
         userid = user.id
@@ -15,14 +16,26 @@ class TasksController < ApplicationController
 
 
     #UPDATE
-    # PATCH /tasks/:id
+    #Patch '/tasks/:id'
     def update
         task = Task.find_by(id: params[:id])
         if task
-        task.update(task_params)
-        render json: task
+            task.update(task_params)
+            render json: task
         else
-        render json: { error: "Task Not Found" }, status: :not_found
+            render json: { error: "Task Not Found" }, status: :not_found
+        end
+    end
+
+
+    #DELETE /plants/:id
+    def destroy 
+        task = Task.find_by(id: params[:id])
+        if task 
+            task.destroy
+            head :no_content
+        else
+            render json: { error: "Task not found" }, status: :not_found
         end
     end
 
