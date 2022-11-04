@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   # delete '/logout', to: 'sessions#destroy'
 
   get 'all-tasks', to: 'tasks#index'
+  patch '/tasks/:id/', to: 'tasks#update'
 
   Rails.application.routes.draw do
   resources :tasks

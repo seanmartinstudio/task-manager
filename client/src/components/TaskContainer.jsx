@@ -1,16 +1,49 @@
 import React from 'react'
+import { useState } from "react"
 
-const TaskContainer = ( {heading, body, complete} ) => {
+const TaskContainer = ( {task, complete} ) => {
+ const {id, heading, body} = task
+ const[taskComplete, setTaskComplete] = useState(complete)
 
+ const changeToIncomplete = () => {
+  fetch(`/tasks/` + id, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ complete: false }),
+  })
+    .then((r) => r.json())
+    .then((data) => {
+      setTaskComplete(data.complete)
+    });
+}
 
+ const changeToComplete = () => {
+  fetch(`/tasks/` + id, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ complete: true }),
+  })
+    .then((r) => r.json())
+    .then((data) => {
+      setTaskComplete(data.complete)
+  });
+ }
   return (
+   <div>
     <article>
-        <h1 className='task-header'>{heading}</h1>
-        <h2>User</h2>
-        <h3>Category</h3>
-        <p>{body}</p>
-        <p>{complete}</p>
+      <h1>{heading}</h1>
+      <p>Published by: {task.user.username}</p>
+      <p>Body: {body}</p>
+      {taskComplete
+      ? <button type="button" onClick={(event) => changeToIncomplete(event)}>Complete</button>
+      : <button type="button" onClick={(event) => changeToComplete(event)} >Incomplete</button>
+      }
     </article>
+   </div>
   )
 }
 

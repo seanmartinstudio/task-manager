@@ -1,12 +1,7 @@
 class TasksController < ApplicationController
     require 'byebug'
 
-    #Read
-    # def index 
-    #     task = Task.all 
-    #     render json: task
-    # end
-
+    #READ 
     def index 
         user = User.find_by(id: session[:user_id])
         userid = user.id
@@ -18,35 +13,21 @@ class TasksController < ApplicationController
         end
     end
 
-        # task = Task.find_by(id: session[:user_id])
-        # render json: user_id
-        # render json: user
-        #task = task foud by user
-        #if task == user
-        #return task
-        # task = Task.all 
-        # render json: task
-    # end
 
-    # def show 
-    #     user = User.find_by(id: session[:user_id])
-    #     if user 
-    #         render json: user, status: :created
-    #     else
-    #         render json: { error: "Not Authorized" }, status: :unauthorized
-    #     end
-    # end
+    #UPDATE
+    # PATCH /tasks/:id
+    def update
+        task = Task.find_by(id: params[:id])
+        if task
+        task.update(task_params)
+        render json: task
+        else
+        render json: { error: "Task Not Found" }, status: :not_found
+        end
+    end
 
-    #Update
-
-
-#     def index 
-#         user = User.find_by(username: params[:username])
-#         if session[:user_id]
-#             render json: Task.all, status: :created
-#         else  
-#             render json: { errors: ["Not Authorized"] }, status: :unauthorized
-#         end
-#     end
+    def task_params
+        params.permit(:complete)
+    end
 
 end
