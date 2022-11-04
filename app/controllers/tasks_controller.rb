@@ -10,9 +10,9 @@ class TasksController < ApplicationController
     def index 
         user = User.find_by(id: session[:user_id])
         userid = user.id
-        tasks = Task.find_by(user_id: userid)
+        tasks = Task.where(user_id: userid)
         if tasks
-            render json: [tasks]
+            render json: tasks
         else
             render json: []
         end

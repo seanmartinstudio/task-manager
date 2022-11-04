@@ -25,6 +25,8 @@ console.log("All Tasks Page - Post", allTasks)
       ? <button>Complete</button>
       : <button>Incomplete</button>
       }
+      <br></br>
+      <br></br>
       </article>
     ))}</div>
   )
