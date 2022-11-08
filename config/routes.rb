@@ -15,12 +15,14 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  # post '/login', to: 'sessions#create'
-  # delete '/logout', to: 'sessions#destroy'
-
   get '/tasks', to: 'tasks#index'
   patch '/tasks/:id/', to: 'tasks#update'
   delete '/tasks/:id/', to: 'tasks#destroy'
+  post '/tasks', to: 'tasks#create'
+
+  get '/categories', to: 'categories#index'
+
+  ###
 
   Rails.application.routes.draw do
   resources :tasks

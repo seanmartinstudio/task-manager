@@ -20,7 +20,7 @@ class TasksController < ApplicationController
     def update
         task = Task.find_by(id: params[:id])
         if task
-            task.update(task_params)
+            task.update(update_task_params)
             render json: task
         else
             render json: { error: "Task Not Found" }, status: :not_found
@@ -39,8 +39,24 @@ class TasksController < ApplicationController
         end
     end
 
-    def task_params
+    def create 
+        user = User.find_by(id: session[:user_id])
+        byebug
+        if user
+            
+            task = user.tasks.create(create_task_params)
+            render json: task, status: :created
+        else
+            render json: { errors: ["Not Authorized"] }, status: :unauthorized
+        end
+    end
+
+    def update_task_params
         params.permit(:complete)
+    end
+
+    def create_task_params
+        params.permit(:heading, :body, :complete, :category_title)
     end
 
 end
