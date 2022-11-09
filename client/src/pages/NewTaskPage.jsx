@@ -5,7 +5,7 @@ import NewTakeForm from '../components/NewTakeForm';
 const NewTaskPage = () => {
   const [heading, setHeading] = useState("")
   const [body, setBody] = useState("")
-  const [complete, setComplete] = useState(false)
+  const [category, setCategory] = useState(null)
   const [categories, setCategories] = useState([])
 
   useEffect(() => {
@@ -26,10 +26,10 @@ const NewTaskPage = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        heading: heading,
-        body: body,
-        complete: complete,
-        category: categories
+        heading,
+        body,
+        complete: false,
+        category_id: parseInt(category)
       }),
     })
       .then((r) => r.json())
@@ -37,10 +37,10 @@ const NewTaskPage = () => {
       .then((data) => console.log("New Task Data Response", data))
   }
   
- 
+ console.log("Selected Category", category)
   return (
     <div>
-      <NewTakeForm handleSubmitTask={handleSubmitTask} setHeading={setHeading} setBody={setBody} categories={categories}/>
+      <NewTakeForm handleSubmitTask={handleSubmitTask} setHeading={setHeading} setBody={setBody} setCategory={setCategory} categories={categories} category={category}/>
     </div>
   )
 }

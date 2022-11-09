@@ -41,9 +41,7 @@ class TasksController < ApplicationController
 
     def create 
         user = User.find_by(id: session[:user_id])
-        byebug
         if user
-            
             task = user.tasks.create(create_task_params)
             render json: task, status: :created
         else
@@ -56,7 +54,7 @@ class TasksController < ApplicationController
     end
 
     def create_task_params
-        params.permit(:heading, :body, :complete, :category_title)
+        params.permit(:heading, :body, :complete, :category_id)
     end
 
 end

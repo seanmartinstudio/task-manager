@@ -1,14 +1,14 @@
 import React from 'react'
 import { useEffect } from "react";
 
-const NewTakeForm = ( {handleSubmitTask, setHeading, setBody, setCategories, categories} ) => {
+const NewTakeForm = ( {handleSubmitTask, setHeading, setBody, setCategories, categories, setCategory, category} ) => {
 
      
       const categoryList = categories.map((category) =>
-      <option>{category.category_title}</option>
+      <option value={category.id}>{category.category_title}</option>
       )
 
-    console.log("New Task Page Categories", categories)
+    // console.log("New Task Page Categories", categories)
   return (
     <form onSubmit={handleSubmitTask}>
         <h1>New Task Form</h1>
@@ -16,8 +16,8 @@ const NewTakeForm = ( {handleSubmitTask, setHeading, setBody, setCategories, cat
         <input type="text" id="body" name="body" placeholder="Body" onChange={(event) => setBody(event.target.value)}></input>
         <br></br>
         <label>Choose a car:</label>
-
-        <select name="categories" id="categories">
+        <select name="categories" id="categories" value={category} onChange={(event) => setCategory(event.target.value)}>
+        <option value="">Select...</option>
         {categoryList}
         </select>
         <br></br>
