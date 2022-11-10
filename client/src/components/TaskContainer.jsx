@@ -46,8 +46,8 @@ const TaskContainer = ( {task, complete, handleDeleteTask} ) => {
    <div>
     <article>
       <h1>{heading}</h1>
-      <p>Published by: {task.user.username}</p>
       <p>Body: {body}</p>
+      <p>Published by: {task.user.username}</p>
       <p>Category: {task.category.category_title}</p>
       {taskComplete
       ? <button type="button" onClick={(event) => changeToIncomplete(event)}>Complete</button>

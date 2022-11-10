@@ -5,19 +5,18 @@ const NewTakeForm = ( {handleSubmitTask, setHeading, setBody, setCategories, cat
 
      
       const categoryList = categories.map((category) =>
-      <option value={category.id}>{category.category_title}</option>
+      <option value={category.id} key={category.id}>{category.category_title}</option>
       )
 
-    // console.log("New Task Page Categories", categories)
+
   return (
     <form onSubmit={handleSubmitTask}>
-        <h1>New Task Form</h1>
-        <input type="text" id="heading" name="heading" placeholder="Heading" onChange={(event) => setHeading(event.target.value)}></input>
-        <input type="text" id="body" name="body" placeholder="Body" onChange={(event) => setBody(event.target.value)}></input>
+        <h1>Create New Task</h1>
+        <input type="text" id="heading" name="heading" placeholder="Heading..." onChange={(event) => setHeading(event.target.value)}></input>
+        <input type="text" id="body" name="body" placeholder="Body..." onChange={(event) => setBody(event.target.value)}></input>
         <br></br>
-        <label>Choose a car:</label>
         <select name="categories" id="categories" value={category} onChange={(event) => setCategory(event.target.value)}>
-        <option value="">Select...</option>
+        <option id="categories" value="">Category...</option>
         {categoryList}
         </select>
         <br></br>

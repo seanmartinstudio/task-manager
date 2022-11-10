@@ -1,22 +1,22 @@
 import React from 'react'
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import NewTakeForm from '../components/NewTakeForm';
 
 const NewTaskPage = () => {
   const [heading, setHeading] = useState("")
   const [body, setBody] = useState("")
-  const [category, setCategory] = useState(null)
+  const [category, setCategory] = useState("")
   const [categories, setCategories] = useState([])
+  const navigate = useNavigate()
 
   useEffect(() => {
     fetch("/categories")
       .then((r) => r.json())
       .then((data) => {
-        // console.log("Category Data", data)
         setCategories(data)
       });
   },[]);
-
 
   const handleSubmitTask = (event) => {
     event.preventDefault()
@@ -32,9 +32,11 @@ const NewTaskPage = () => {
         category_id: parseInt(category)
       }),
     })
-      .then((r) => r.json())
-      // .then((newPlant) => onAddPlant(newPlant));
-      .then((data) => console.log("New Task Data Response", data))
+    .then((response) => {
+      if (response.ok) {
+        navigate('/tasks')
+      }
+    })
   }
   
  console.log("Selected Category", category)

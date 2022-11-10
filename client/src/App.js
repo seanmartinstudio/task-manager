@@ -1,13 +1,15 @@
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
 import LoginPage from "./pages/LoginPage"
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 import AllTasksPage from './pages/AllTasksPage';
 import NavBar from './components/NavBar';
 import NewTaskPage from './pages/NewTaskPage'
+import HomePage from './pages/HomePage';
 
 function App() {
   const [user, setUser] = useState(null)
+
 
   useEffect(() => {
     // // auto-login
@@ -29,8 +31,10 @@ function App() {
   <main>
     <NavBar setUser={setUser} user={user}/>
     <Routes>
-      <Route path="/tasks/new" element={<NewTaskPage user={user}/>} />
-      <Route path="/tasks" element={<AllTasksPage user={user}/>} />
+      <Route exact path="/" element={<HomePage user={user}/>} />
+      <Route exact path="/login" element={<LoginPage/>}/>
+      <Route exact path="/tasks/new" element={<NewTaskPage user={user}/>} />
+      <Route exact path="/tasks" element={<AllTasksPage user={user}/>} />
     </Routes>
   </main>
   )

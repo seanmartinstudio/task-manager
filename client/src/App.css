@@ -6,12 +6,26 @@ h1 {
   text-align: center;
 }
 
+input:focus {
+  outline: none;
+}
+
 artcile, h1 {
   text-align: left; 
 }
 
-button body {
-  color:blue
+form, h1 {
+  text-align: center;
+}
+
+select {
+  width: 53%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border-radius: 15px;
+  border-style: solid;
+  border-width: 2px;
+  outline: none;
 }
 
 form {
