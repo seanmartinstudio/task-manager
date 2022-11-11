@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
     require 'byebug'
 
     #LogIn form end point
+    #POST '/login'
     def create 
         user = User.find_by(username: params[:username])
         if user&.authenticate(params[:password])
@@ -13,6 +14,7 @@ class SessionsController < ApplicationController
     end
 
     #LogOut form end point
+    #DElETE '/logout'
     def destroy 
         user = User.find_by(username: params[:username])
         if session[:user_id]

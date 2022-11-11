@@ -39,7 +39,7 @@ const NewTaskPage = () => {
     })
   }
   
- console.log("Selected Category", category)
+
   return (
     <div>
       <NewTakeForm handleSubmitTask={handleSubmitTask} setHeading={setHeading} setBody={setBody} setCategory={setCategory} categories={categories} category={category}/>

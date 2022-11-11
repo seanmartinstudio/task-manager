@@ -1,13 +1,15 @@
 class UsersController < ApplicationController
     require 'byebug'
 
-    #Dev Test end point for all Users
+    #Test end point to fetch all Users
+    #GET '/all'
     def index 
         user = User.all 
         render json: user
     end
     
     #SignUp Form end point
+    #POST '/signup'
     def create 
         user = User.create(user_params)
         if user.valid?
@@ -17,8 +19,8 @@ class UsersController < ApplicationController
         end
     end
 
-    
     #Fecth this on App Page load, if user is OK, render All Posts page, if not, render Log in Page.
+    #GET '/me'
     def show 
         user = User.find_by(id: session[:user_id])
         if user 

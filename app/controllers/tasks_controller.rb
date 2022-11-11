@@ -1,8 +1,8 @@
 class TasksController < ApplicationController
     require 'byebug'
 
-    #READ 
-    #Patch 'tasks#index'
+    
+    #GET '/tasks'
     def index 
         user = User.find_by(id: session[:user_id])
         userid = user.id
@@ -14,9 +14,7 @@ class TasksController < ApplicationController
         end
     end
 
-
-    #UPDATE
-    #Patch '/tasks/:id'
+    #PATCH '/tasks/:id'
     def update
         task = Task.find_by(id: params[:id])
         if task
@@ -27,8 +25,7 @@ class TasksController < ApplicationController
         end
     end
 
-
-    #DELETE /plants/:id
+    #DELETE '/tasks/:id'
     def destroy 
         task = Task.find_by(id: params[:id])
         if task 
@@ -39,6 +36,7 @@ class TasksController < ApplicationController
         end
     end
 
+    #POST '/tasks'
     def create 
         user = User.find_by(id: session[:user_id])
         if user
