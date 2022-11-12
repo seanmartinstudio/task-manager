@@ -5,7 +5,7 @@ const LoginForm = ( {onLogin, setShowLogin} ) => {
 
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
-  const [notSignedUp, setNotSignedUp] = useState(false)
+  const [errors, setErrors] = useState([])
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -19,16 +19,11 @@ const LoginForm = ( {onLogin, setShowLogin} ) => {
       if (r.ok) {
         r.json().then((user) => onLogin(user));
       } else {
-        setNotSignedUp(true)
+        r.json().then((err) => setErrors(err.errors))
         setUsername("")
         setPassword("")
       }
     });
-  }
-
-  let notSignedUpMessage
-  if(notSignedUp) {
-    notSignedUpMessage = <p className="notSignedUpMessage">Not a current user...</p>
   }
 
   return (
@@ -46,7 +41,12 @@ const LoginForm = ( {onLogin, setShowLogin} ) => {
     <button className="button" type="button" onClick={() => setShowLogin(false)}>New User? Sign Up Here</button>
     
     <br></br>
-    {notSignedUpMessage}
+    <br></br>
+    <ul>
+    {errors.map((error) => (
+        <li key={error}>{error}</li>
+      ))}
+    </ul>
   </form>
 )
 }
