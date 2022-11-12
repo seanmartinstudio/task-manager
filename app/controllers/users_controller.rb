@@ -15,7 +15,7 @@ class UsersController < ApplicationController
         if user.valid?
             render json: user, except:[:password], status: :created
         else
-            render json: { errors: user.errors }, status: :unprocessable_entity
+            render json: { errors: user.errors.full_messages }, status: :unauthorized
         end
     end
 
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.permit(:username, :password, :password_confirmation, :title)
+        params.permit(:username, :password, :title)
     end
 
 end

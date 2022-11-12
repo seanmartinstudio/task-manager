@@ -5,7 +5,7 @@ const SignupForm = ( {onLogin, setShowLogin} ) => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [title, setTitle] = useState("")
-    const [passwordTaken, setPasswordTaken] = useState(false)
+    const [errors, setErrors] = useState([])
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
@@ -19,20 +19,13 @@ const SignupForm = ( {onLogin, setShowLogin} ) => {
           if (r.ok) {
             r.json().then((user) => onLogin(user))
           } else {
-            setPasswordTaken(true)
+            r.json().then((err) => setErrors(err.errors));
             setUsername("")
             setPassword("")
             setTitle("")
           }
         });
       }
-
-      //Renders a message to the page if password is unavailable
-      let passwordTakenMessage
-      if(passwordTaken) {
-        passwordTakenMessage = <p className="passwordTakenMessage">Enter a unique Username...</p>
-      }
-
 
    return (
 
@@ -52,7 +45,12 @@ const SignupForm = ( {onLogin, setShowLogin} ) => {
     <button className="button" type="button" onClick={() => setShowLogin(true)}>Already a user? Log In Here</button>
 
     <br></br>
-    {passwordTakenMessage}
+    <br></br>
+    <ul>
+    {errors.map((error) => (
+        <li key={error}>{error}</li>
+      ))}
+    </ul>
   </form>
   )
   
