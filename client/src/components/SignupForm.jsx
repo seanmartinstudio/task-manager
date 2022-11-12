@@ -30,7 +30,7 @@ const SignupForm = ( {onLogin, setShowLogin} ) => {
       //Renders a message to the page if password is unavailable
       let passwordTakenMessage
       if(passwordTaken) {
-        passwordTakenMessage = <p className="passwordTakenMessage">Username taken...</p>
+        passwordTakenMessage = <p className="passwordTakenMessage">Enter a unique Username...</p>
       }
 
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import NewTakeForm from '../components/NewTakeForm';
+import NewTaskForm from '../components/NewTaskForm';
 
 const NewTaskPage = () => {
   const [heading, setHeading] = useState("")
@@ -42,7 +42,7 @@ const NewTaskPage = () => {
 
   return (
     <div>
-      <NewTakeForm handleSubmitTask={handleSubmitTask} setHeading={setHeading} setBody={setBody} setCategory={setCategory} categories={categories} category={category}/>
+      <NewTaskForm handleSubmitTask={handleSubmitTask} setHeading={setHeading} setBody={setBody} setCategory={setCategory} categories={categories} category={category}/>
     </div>
   )
 }

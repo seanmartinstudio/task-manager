@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect } from "react";
 
-const NewTakeForm = ( {handleSubmitTask, setHeading, setBody, setCategories, categories, setCategory, category} ) => {
+const NewTaskForm = ( {handleSubmitTask, setHeading, setBody, setCategories, categories, setCategory, category} ) => {
 
      
       const categoryList = categories.map((category) =>
@@ -25,4 +25,4 @@ const NewTakeForm = ( {handleSubmitTask, setHeading, setBody, setCategories, cat
   )
 }
 
-export default NewTakeForm
+export default NewTaskForm
