@@ -1,24 +1,25 @@
-# README
+# Task Manager
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Overview
+Allows a team of developers to each sign up with their own account and monitor their inidivual tasks across work and personal time. 
 
-Things you may want to cover:
+## Dependencies
+* ruby 2.7.4p191
+* react-router-dom 6.4.2
 
-* Ruby version
+## Installation
+* Fork and clone `https://github.com/seanmartinstudio/task-manager`.
+* Navigate to and open the `task-manager` project.
+* In the terminal type `rails s` to fire up the API on local port 3000.
+* Next, open up another terminal window and type `npm start --prefix client` to fire up the font end on local local port 4000.
 
-* System dependencies
+## How To Use
+* A user can sign up with an account, log in and stayed logged in via auth.
+* Each individual user has access to their tasks only.
+* A logged in user can create, read, modify that status of, or delete a task.
 
-* Configuration
+## Future Updates
+* A user can search through their tasks by category. 
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## License
+[MIT License](https://opensource.org/licenses/MIT)
