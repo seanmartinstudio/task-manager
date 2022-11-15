@@ -32,7 +32,7 @@ function App() {
     <NavBar setUser={setUser} user={user}/>
     <Routes>
       <Route exact path="/" element={<HomePage user={user}/>} />
-      <Route exact path="/login" element={<LoginPage/>}/>
+      <Route exact path="/login" element={<LoginPage />}/>
       <Route exact path="/tasks/new" element={<NewTaskPage user={user}/>} />
       <Route exact path="/tasks" element={<AllTasksPage user={user}/>} />
     </Routes>

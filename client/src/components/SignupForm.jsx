@@ -1,5 +1,7 @@
 import React from 'react'
 import { useState } from "react";
+// import { Link, useNavigate } from "react-router-dom";
+
 
 const SignupForm = ( {onLogin, setShowLogin} ) => {
     const [username, setUsername] = useState("")
@@ -17,7 +19,8 @@ const SignupForm = ( {onLogin, setShowLogin} ) => {
           body: JSON.stringify({ username, password, title }),
         }).then((r) => {
           if (r.ok) {
-            r.json().then((user) => onLogin(user))
+            // r.json().then((user) => onLogin(user))
+            r.json().then(() => setShowLogin(true))
           } else {
             r.json().then((err) => setErrors(err.errors))
             setUsername("")
