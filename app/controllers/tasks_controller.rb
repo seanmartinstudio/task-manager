@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
     require 'byebug'
 
-    
+    #AllTasksPage end point
     #GET '/tasks'
     def index 
         user = User.find_by(id: session[:user_id])
@@ -14,6 +14,7 @@ class TasksController < ApplicationController
         end
     end
 
+    #TaskContainer end point (complete or incomplete boolean)
     #PATCH '/tasks/:id'
     def update
         task = Task.find_by(id: params[:id])
@@ -25,6 +26,7 @@ class TasksController < ApplicationController
         end
     end
 
+    #TaskContainer end point
     #DELETE '/tasks/:id'
     def destroy 
         task = Task.find_by(id: params[:id])
@@ -36,6 +38,7 @@ class TasksController < ApplicationController
         end
     end
 
+    #NewTaskpage end point
     #POST '/tasks'
     def create 
         user = User.find_by(id: session[:user_id])

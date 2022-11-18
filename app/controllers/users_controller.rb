@@ -8,7 +8,7 @@ class UsersController < ApplicationController
         render json: user
     end
     
-    #SignUp Form end point
+    #SignupForm end point
     #POST '/signup'
     def create 
         user = User.create(user_params)
@@ -19,7 +19,9 @@ class UsersController < ApplicationController
         end
     end
 
-    #Fecth this on App Page load, if user is OK, render All Posts page, if not, render Log in Page.
+    #App.js end point on page load. 
+    #If response.ok => navigate HomePage.
+    #Else => navigate to LoginPage.
     #GET '/me'
     def show 
         user = User.find_by(id: session[:user_id])
