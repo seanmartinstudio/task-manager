@@ -19,7 +19,7 @@ class UsersController < ApplicationController
         end
     end
 
-    #App.js end point on page load. 
+    #App.js end point on page load to authenticate return user.
     #If response.ok => navigate HomePage.
     #Else => navigate to LoginPage.
     #GET '/me'

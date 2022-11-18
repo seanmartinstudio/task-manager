@@ -10,22 +10,18 @@ import HomePage from './pages/HomePage';
 function App() {
   const [user, setUser] = useState(null)
 
-
   useEffect(() => {
-    // // auto-login
+    //When app.js mounts, fetch user by session id for login, store logged in user in 'user' state.
     fetch("/me").then((response) => {
       if (response.ok) {
         response.json().then((user) => setUser(user))
-      }
-    }).then(() => {
-      console.log("Heading to Login page")
-    })
+      }})
   }, []);
 
-  console.log("Logged In User => ", user)
-
-
+  //If is user can't be found by session id, return the Login Page.
   if (!user) return <LoginPage onLogin={setUser} />
+
+  console.log("Logged In User => ", user)
 
   return (
   <main>
