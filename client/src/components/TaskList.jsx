@@ -3,6 +3,8 @@ import TaskContainer from '../components/TaskContainer';
 
 const TaskList = ( {tasks, handleDeleteTask} ) => {
 
+//Map across tasks that are set in state.
+
   return (
     <ul>
       {tasks.map((task) => {
