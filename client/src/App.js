@@ -18,8 +18,8 @@ function App() {
       }})
   }, []);
 
-  //If is user can't be found by session id, return the Login Page.
-  if (!user) return <LoginPage onLogin={setUser} />
+  //If user can't be found by session id, return the Login Page.
+  if (!user) return <LoginPage setUser={setUser} />
 
   console.log("Logged In User => ", user)
 
@@ -38,4 +38,3 @@ function App() {
 
 export default App;
 
-//React Fetch in App is not returning at full promise when useEffect fires, just a promise. This needs to solved for auto login.

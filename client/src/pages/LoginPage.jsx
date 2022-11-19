@@ -3,17 +3,16 @@ import { useState } from "react";
 import LoginForm from '../components/LoginForm';
 import SignupForm from '../components/SignupForm';
 
+const LoginPage = ( {setUser} ) => {
 
-
-const LoginPage = ( {onLogin} ) => {
-  //This boolean value toggles the Login Form and Signup Form button
+  //This boolean value toggles the LoginForm and SignupForm button via ternary.
   const [showLogin, setShowLogin] = useState(true)
 
  return (
   <div>
   { showLogin 
-  ? <LoginForm onLogin={onLogin} setShowLogin={setShowLogin}/>
-  : <SignupForm onLogin={onLogin} setShowLogin={setShowLogin}/>
+  ? <LoginForm setUser={setUser} setShowLogin={setShowLogin}/>
+  : <SignupForm setUser={setUser} setShowLogin={setShowLogin}/>
   }
   </div>
  )
