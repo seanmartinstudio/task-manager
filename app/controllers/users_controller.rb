@@ -32,6 +32,13 @@ class UsersController < ApplicationController
         end
     end
 
+    #live coding practice with Ben
+    def search
+        category = Category.find_by(category_title: params[:category_title])
+        user = category.users
+        render json: user
+    end
+
     private
 
     def user_params

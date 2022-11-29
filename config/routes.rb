@@ -31,4 +31,19 @@ Rails.application.routes.draw do
     # route to test your configuration
     get '/hello', to: 'application#hello_world'
   end
+
+  #Practice
+
+  #Create a custom route which looks at string and returns all users that have tasks that have a category with that string as the category title. The custom route should be a post route. You can create your own controller action and the action should return all users who have that category title in JSON. Validate this route is working through Postman.
+
+  #Step 1 create custom route with POST
+  #Step 2 create controller action 
+  #Step 3 controller should query by category title to find associated user and return title as JSON obj
+  
+
+  #Route
+  #post '/login', to: 'sessions#create'
+  post '/category', to: 'users#search'
+  
+  
 end

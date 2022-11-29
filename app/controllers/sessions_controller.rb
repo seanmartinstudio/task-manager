@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
     require 'byebug'
 
-    #LognForm end point
+    #LoginForm end point
     #POST '/login'
     def create 
         user = User.find_by(username: params[:username])
