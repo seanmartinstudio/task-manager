@@ -17,10 +17,13 @@ function handleLogoutClick() {
   return (
     <nav className='nav'>
       <Link to="/tasks">
-      <button>Tasks</button>
+      <button> All Tasks</button>
       </Link>
       <Link to="/tasks/new">
-      <button>New</button>
+      <button>New Task</button>
+      <Link to="/categories/new">
+      <button>New Category</button>
+      </Link>
       </Link>
       <button className="button" type="button" onClick={handleLogoutClick}>Log Out</button>
     </nav>
