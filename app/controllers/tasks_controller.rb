@@ -17,8 +17,10 @@ class TasksController < ApplicationController
     #TaskContainer end point (complete or incomplete boolean)
     #PATCH '/tasks/:id'
     def update
+        user = User.find_by(id: session[:user_id])
+        user_id = user.id
         task = Task.find_by(id: params[:id])
-        if task
+        if task.user_id == user_id
             task.update(update_task_params)
             render json: task
         else
@@ -29,6 +31,8 @@ class TasksController < ApplicationController
     #TaskContainer end point
     #DELETE '/tasks/:id'
     def destroy 
+        user = User.find_by(id: session[:user_id])
+        user_id = user.id
         task = Task.find_by(id: params[:id])
         if task 
             task.destroy
@@ -50,6 +54,8 @@ class TasksController < ApplicationController
         end
     end
 
+    private
+    
     def update_task_params
         params.permit(:complete)
     end
