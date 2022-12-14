@@ -9,13 +9,19 @@ class CategoriesController < ApplicationController
 
     #POST '/categories'
     def create 
-        category = Category.create(category_params) 
-        render json: category
+        category = Category.find_or_create_by(category_params) 
         if category
             render json: category, status: :created
         else
             render json: { errors: category.errors }, status: :unprocessable_entity
         end
+    end
+
+    ### Live codeing practice
+    def user_categories
+        user = User.find_by(username: params[:username])
+        categories = user.categories.uniq
+        render json: categories
     end
 
     def category_params
