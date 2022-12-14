@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   post '/tasks', to: 'tasks#create'
 
   get '/categories', to: 'categories#index'
+  post '/categories', to: 'categories#create'
 
   ###
 
@@ -32,18 +33,21 @@ Rails.application.routes.draw do
     get '/hello', to: 'application#hello_world'
   end
 
-  #Practice
+  ###CODING PRACTICE:
 
-  #Create a custom route which looks at string and returns all users that have tasks that have a category with that string as the category title. The custom route should be a post route. You can create your own controller action and the action should return all users who have that category title in JSON. Validate this route is working through Postman.
-
-  #Step 1 create custom route with POST
-  #Step 2 create controller action 
-  #Step 3 controller should query by category title to find associated user and return title as JSON obj
-  
-
-  #Route
-  #post '/login', to: 'sessions#create'
+  ### Live coding practice
   post '/category', to: 'users#search'
-  
+
+  ### Live coding practice
+  post '/findtask', to: 'tasks#search_category'
+
+  ### Live coding practice
+  post '/findcategory', to: 'categories#user_categories'
+
+  ### Coding with David
+  post '/taskbynumber', to: 'tasks#task_number'
+
+  ### Code practice with Ben 12/13/22
+  get 'findtaskbyinteger/:integer', to: 'tasks#task_number_2'
   
 end
