@@ -6,6 +6,7 @@ import AllTasksPage from './pages/AllTasksPage';
 import NavBar from './components/NavBar';
 import NewTaskPage from './pages/NewTaskPage'
 import HomePage from './pages/HomePage';
+import NewCategoryPage from './pages/NewCategoryPage';
 
 function App() {
   const [user, setUser] = useState(null)
@@ -31,6 +32,7 @@ function App() {
       <Route exact path="/login" element={<LoginPage />}/>
       <Route exact path="/tasks/new" element={<NewTaskPage user={user}/>} />
       <Route exact path="/tasks" element={<AllTasksPage user={user}/>} />
+      <Route exact path="/categories/new" element={<NewCategoryPage user={user}/>} />
     </Routes>
   </main>
   )
