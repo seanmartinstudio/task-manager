@@ -66,17 +66,19 @@ class TasksController < ApplicationController
         end
     end
 
-
-    
-
         ### CODE PRACTICE
         def search_category
             category = Category.find_by(category_title: params[:category_title])
             tasks = category.tasks
             render json: tasks
         end
+
+        def find_category
+            category = Category.find_by(params[:category_title])
+            tasks = category.tasks
+            render json: tasks
+        end
     
-        ## CODE PRACTICE
         ## TASK: "Create a route that lets us search for a task that has a certain number of words"
         def task_number_2 
             #Grab the value of the parameter and convert to int

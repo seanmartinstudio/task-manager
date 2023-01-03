@@ -49,5 +49,8 @@ Rails.application.routes.draw do
 
   ### Code practice with Ben 12/13/22
   get 'findtaskbyinteger/:integer', to: 'tasks#task_number_2'
+
+  ### Code Practice Dec 29
+  get 'find_category/:string', to: 'tasks#find_category'
   
 end

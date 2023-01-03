@@ -32,10 +32,11 @@ class UsersController < ApplicationController
         end
     end
 
-    #live coding practice with Ben
+    ### CODE PRACTICE
+    ### Returns all users that have tasks that have a category with that string as the category title
     def search
         category = Category.find_by(category_title: params[:category_title])
-        user = category.users
+        user = category.users.distinct.count
         render json: user
     end
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import SignupPage from '../NotInUse/SignupPage'
 
 const HomePage = ( {user} ) => {
   return (

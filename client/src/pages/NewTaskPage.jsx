@@ -51,4 +51,5 @@ const NewTaskPage = () => {
 //Mapp across array of category objects and dynamilly render them to dropdown UI
 //Grab cateogry drop down to pass on as category param when creating new task
 
+
 export default NewTaskPage
