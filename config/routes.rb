@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   ###CODING PRACTICE:
 
   ### Live coding practice
-  post '/category', to: 'users#search'
+  get '/category/:string', to: 'users#search'
 
   ### Live coding practice
   post '/findtask', to: 'tasks#search_category'
@@ -50,7 +50,16 @@ Rails.application.routes.draw do
   ### Code practice with Ben 12/13/22
   get 'findtaskbyinteger/:integer', to: 'tasks#task_number_2'
 
-  ### Code Practice Dec 29
-  get 'find_category/:string', to: 'tasks#find_category'
+  # ### Code Practice Dec 29
+  # get 'find_category/:string', to: 'tasks#find_category'
+
+  ###Code Practice Ben 1/5
+  get 'find_category_number/:integer', to: 'categories#find_category_number'
+
+  ### Solo practice 1/9
+  post 'user_body_count', to: 'users#user_body_count'
+
+  ### Solo practice 1/10
+  get 'find_category_and_true/:category', to: 'tasks#find_category_and_true'
   
 end

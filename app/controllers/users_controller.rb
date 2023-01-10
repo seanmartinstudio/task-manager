@@ -35,9 +35,25 @@ class UsersController < ApplicationController
     ### CODE PRACTICE
     ### Returns all users that have tasks that have a category with that string as the category title
     def search
-        category = Category.find_by(category_title: params[:category_title])
+        category = Category.find_by(params[:category_title])
         user = category.users.distinct.count
         render json: user
+    end
+
+     ### Solo practice 1/9
+     ### Accept an integer as a param and find all Users who have tasks with less than the integer body word count 
+    def user_body_count
+        parameter = params[:integer]
+        parameter = parameter
+        tasks = Task.all
+        array = tasks.filter { |task| task.body.split.count < parameter }
+        if array != []
+            users = array.map { |task| task.user.username }
+            users = users.uniq
+            render json: users
+        else
+            render json: {error: ["Not Found"]}
+        end
     end
 
     private

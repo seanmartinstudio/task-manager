@@ -92,6 +92,18 @@ class TasksController < ApplicationController
             render json: correct_task
         end
 
+        ### Solo practice 1/10
+        def find_category_and_true
+            category = Category.find_by(params[:category_title])
+            tasks = category.tasks
+            array = tasks.filter { |task| task.complete == true}
+            if array != []
+                render json: array
+            else  
+                render json: { errors: ["Not found"] }
+            end
+        end
+
     private
 
     def update_task_params
